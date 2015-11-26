@@ -27,11 +27,11 @@ def deploy_lxc():
             apt-get update
             apt-get -y install wget lxc libcgmanager-dev
 
-            lxc-create -t download -n centos -- --dist centos --release 6 --arch amd64
-            [[ $(grep -ir 'lxc.start.auto=1' /var/lib/lxc/_centos/config|wc -l) -eq 0 ]] && echo lxc.start.auto=1 >> /var/lib/lxc/_centos/config
+            lxc-create -t centos -n centos
+            [[ $(grep -ir 'lxc.start.auto=1' /var/lib/lxc/centos/config|wc -l) -eq 0 ]] && echo lxc.start.auto=1 >> /var/lib/lxc/centos/config
 
-            lxc-create -t download -n ubuntu -- --dist ubuntu --release trusty --arch amd64
-            [[ $(grep -ir 'lxc.start.auto=1' /var/lib/lxc/_ubuntu/config|wc -l) -eq 0 ]] && echo lxc.start.auto=1 >> /var/lib/lxc/_ubuntu/config
+            lxc-create -t ubuntu -n ubuntu
+            [[ $(grep -ir 'lxc.start.auto=1' /var/lib/lxc/ubuntu/config|wc -l) -eq 0 ]] && echo lxc.start.auto=1 >> /var/lib/lxc/ubuntu/config
             ''')
 
 
