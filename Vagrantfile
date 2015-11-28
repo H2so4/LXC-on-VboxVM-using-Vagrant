@@ -24,6 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |global_config|
       config.vm.box = options[:box_name]
       config.vm.host_name = options[:hostname]
       config.vm.network :private_network, ip: options[:private_ip]
+      config.vm.network "forwarded_port", guest: options[:forward_port][0], host: options[:forward_port][1]
       
       config.vm.provider "virtualbox" do |v|
         v.memory = options[:ram]
